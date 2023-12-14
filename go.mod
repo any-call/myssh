@@ -1,4 +1,4 @@
-module github.com/any-call/myssh
+module gitee.com/any-call/myssh
 
 go 1.20
 
