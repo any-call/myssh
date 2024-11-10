@@ -29,7 +29,7 @@ func NewClient(host, user, password string, port int) (Client, error) {
 
 func (self *client) Reset() error {
 	if self.Client != nil {
-		self.Client.Close()
+		_ = self.Client.Close()
 		self.Client = nil
 	}
 
@@ -63,7 +63,9 @@ func (self *client) Run(cmd string) (output []byte, error error) {
 		return nil, err
 	}
 
-	defer session.Close()
+	defer func() {
+		_ = session.Close()
+	}()
 
 	session.Stdout = nil
 	session.Stderr = nil
