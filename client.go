@@ -85,6 +85,10 @@ func (self *client) Runs(fn OutFn, cmd ...string) {
 	}
 }
 
+func (self *client) GetClient() *ssh.Client {
+	return self.Client
+}
+
 func (self *client) Close() error {
 	var err error
 	if self.Client != nil {
